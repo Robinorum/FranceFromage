@@ -1,0 +1,39 @@
+<header class="header">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Logo -->
+        <div class="col-2 d-flex justify-content-center">
+          <img src="/logo.png" alt="Logo" height="100px" />
+        </div>
+  
+        <!-- Navigation -->
+        <div class="col-8">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="navbar-nav text-center">
+              <a routerLink="/accueil" routerLinkActive="active" class="nav-item nav-link">Accueil</a>
+              
+              <!-- Lait Link with Dropdown Toggle -->
+              <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="laitDropdown" role="button" (click)="toggleLait()">
+                  Lait
+                </a>
+                <ul class="dropdown-menu" [class.show]="laitVisible" aria-labelledby="laitDropdown">
+                  <li><a class="dropdown-item" href="#">Vache</a></li>
+                  <li><a class="dropdown-item" href="#">Chèvre</a></li>
+                  <li><a class="dropdown-item" href="#">Brebis</a></li>
+                </ul>
+              </div>
+  
+              <a routerLink="/carte" routerLinkActive="active" class="nav-item nav-link">Carte</a>
+            </div>
+          </nav>
+        </div>
+  
+        <!-- About Link -->
+        <div class="col-2 d-flex justify-content-center">
+          <a routerLink="/about" routerLinkActive="active" class="btn btn-outline-primary">A propos</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  

@@ -1,0 +1,16 @@
+<div class="card fromage-card">
+    <div class="card-header text-center">
+      <h5 class="card-title">{{ fromage.name }}</h5>
+    </div>
+    <div class="card-body text-center">
+      <img class="fromage-img" [src]="fromage.image" alt="{{ fromage.name }}" />
+      <p class="fromage-info">
+        <strong>Département :</strong> {{ fromage.departement }} <br />
+        <strong>Lait :</strong> {{ fromage.milk }}
+      </p>
+      <a [href]="fromage.wiki_page" target="_blank" class="btn btn-primary">
+        Voir sur Wikipedia
+      </a>
+    </div>
+  </div>
+  

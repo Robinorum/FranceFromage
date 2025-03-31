@@ -1,0 +1,17 @@
+.nav-item.dropdown .dropdown-menu {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .nav-item.dropdown .dropdown-menu.show {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .nav-link {
+    cursor: pointer;
+  }
+  

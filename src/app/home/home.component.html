@@ -1,0 +1,12 @@
+<div class="bg-color-1">
+    <div class="row">
+        @for(fromage of fromages; track fromage.name) {
+            <div class="col-3">
+                
+                <app-fromage [fromage]="fromage"></app-fromage>
+                
+            </div>
+            }
+    </div>
+  </div>
+  
