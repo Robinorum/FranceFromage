@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { inject,Injectable } from '@angular/core';
+import { inject,Injectable} from '@angular/core';
 import { Fromage } from './fromage';
 import { map, switchMap, Observable, of, tap, forkJoin } from 'rxjs';
 import { WikipediaService } from './wikipedia.service';
+
 
 @Injectable({
 
@@ -26,11 +27,12 @@ export class FromageService {
       ),
       switchMap(fromages =>{
         const fromageObservables = fromages.map((el: any) => 
-          this.wikipediaService.getImageFromWikipedia(el.page_francaise).pipe(
+          this.wikipediaService.getImageFromWikipedia(el.page_francaise, el.english_page).pipe(
             map(imageUrl => ({
               name: el.fromage,
               departement: el.departement,
               wiki_page: el.page_francaise,
+              wiki_page_en : el.english_page,
               milk: el.lait,
               image: imageUrl
             }))
@@ -42,4 +44,18 @@ export class FromageService {
   )
   );
   }
+
+
+
+  getRandomFromage(): Observable<Fromage> {
+    return this.getFromages()
+    .pipe(
+      map((fromages: Fromage[]) => {
+        const randomValue = Math.floor(Math.random() * fromages.length);
+        return fromages[randomValue];
+      })
+    );
+  }
+
+
 }

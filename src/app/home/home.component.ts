@@ -1,6 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject} from '@angular/core';
 import { FromageService } from '../fromage.service';
 import { FromageComponent } from '../fromage/fromage.component';
+import { Fromage } from '../fromage';
+
 
 @Component({
   selector: 'app-home',
@@ -10,18 +12,17 @@ import { FromageComponent } from '../fromage/fromage.component';
 })
 
 
-export class HomeComponent implements OnInit{
+export class HomeComponent{
 
-  fromages = <any>[]
+  fromage_random:Fromage|null=null
   fromageService = inject(FromageService)
 
   constructor() { }
 
   ngOnInit(): void {
-    this.fromageService.getFromages().subscribe(
-      data => this.fromages = data
+    this.fromageService.getRandomFromage().subscribe(
+      data => this.fromage_random = data
     )
   }
-
 
 }

@@ -1,17 +1,31 @@
-.nav-item.dropdown .dropdown-menu {
-    display: none;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-  
-  .nav-item.dropdown .dropdown-menu.show {
-    display: block;
-    visibility: visible;
-    opacity: 1;
-  }
-  
-  .nav-link {
-    cursor: pointer;
-  }
-  
+.header {
+  width: 100%;
+  padding: 1rem 0; /* Ajoute un peu d'espace vertical */
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px; /* Ajustez selon vos besoins */
+  margin: 0 auto;
+}
+
+.logo-container {
+  padding-left: 0; /* Assure que le logo est collé à gauche */
+}
+
+.nav-container .navbar-nav {
+  gap: 0.5rem; /* Espacement réduit entre les liens */
+}
+
+.nav-container .nav-link {
+  padding: 0.5rem 0.75rem; /* Padding raisonnable pour les liens */
+}
+
+.about-container {
+  padding-right: 0; /* Assure que le bouton est collé à droite */
+}
+
+/* Style actif pour les liens */
+.nav-link.active {
+  font-weight: bold; /* Optionnel : met en évidence le lien actif */
+}

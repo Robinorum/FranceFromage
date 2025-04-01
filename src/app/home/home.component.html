@@ -1,12 +1,16 @@
-<div class="bg-color-1">
-    <div class="row">
-        @for(fromage of fromages; track fromage.name) {
-            <div class="col-3">
-                
-                <app-fromage [fromage]="fromage"></app-fromage>
-                
-            </div>
-            }
+<div class="welcome-section">
+    <div class="welcome-box">
+      <p>Bienvenue sur FranceFromage, le premier site qui référence l’entièreté des fromages français !</p>
     </div>
   </div>
   
+  <div class="fromage-section">
+    <h2>Voici le fromage aléatoire du moment !!</h2>
+    <div class="row fromage-container">
+      <div class="col-3">
+
+        <app-fromage [fromage]="fromage_random"></app-fromage>
+        
+      </div>
+    </div>
+  </div>
