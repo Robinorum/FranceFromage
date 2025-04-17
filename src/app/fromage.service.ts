@@ -58,4 +58,15 @@ export class FromageService {
   }
 
 
+  getFromageContains(prefix: string): Observable<Fromage[]> {
+    return this.getFromages().pipe(
+      map((fromages: Fromage[]) =>
+        fromages.filter((fromage) =>
+          fromage.name.toLowerCase().startsWith(prefix.toLowerCase())
+        )
+      )
+    );
+  }
+
+
 }

@@ -13,12 +13,42 @@ export class AllCheeseComponent implements OnInit {
 
   fromages = <any>[]
   fromageService = inject(FromageService)
+  isLoading: boolean=false
 
   constructor() { }
 
   ngOnInit(): void {
-    this.fromageService.getFromages().subscribe(
-      data => this.fromages = data
+    this.isLoading = true;
+    this.fromageService.getFromages().subscribe({
+      next: (data) =>{
+        this.fromages=data;
+        this.isLoading=false;
+      },
+
+      error: () => {
+        this.fromages=[];
+        this.isLoading=false;
+      }
+    }
+    
+    )
+  }
+
+
+  onFilter = (patern: any) => {
+    this.isLoading=true;
+    this.fromageService.getFromageContains(patern).subscribe({
+      next: (data) =>{
+        this.fromages=data;
+        this.isLoading=false;
+      },
+
+      error: () => {
+        this.fromages=[];
+        this.isLoading=false;
+      }
+    }
+
     )
   }
 
