@@ -58,15 +58,54 @@ export class FromageService {
   }
 
 
-  getFromageContains(prefix: string): Observable<Fromage[]> {
-    return this.getFromages().pipe(
+  getFromageContains(search: string): Observable<Fromage[]> {
+    return this.getFromages()
+    .pipe(
       map((fromages: Fromage[]) =>
         fromages.filter((fromage) =>
-          fromage.name.toLowerCase().startsWith(prefix.toLowerCase())
+          fromage.name.toLowerCase().startsWith(search.toLowerCase())
         )
       )
     );
   }
+
+
+
+  getFromagesMilk(milk: string | null): Observable<Fromage[]> {
+    return this.getFromages()
+    .pipe(
+      map((fromages: Fromage[]) =>
+        milk
+          ? fromages.filter((fromage) =>
+              fromage.milk.map((m) => m.toLowerCase()).includes(milk.toLowerCase())
+            )
+          : fromages
+      )
+    );
+  }
+
+
+  getFromagesFiltres(search: string, milk: string | null): Observable<Fromage[]> {
+
+    if (!search && !milk) {
+      return this.getFromages();
+    }
+
+    
+    const nameFiltre = search ? this.getFromageContains(search) : this.getFromages();
+    const milkFiltre = milk ? this.getFromagesMilk(milk) : this.getFromages();
+
+    
+    return forkJoin([nameFiltre, milkFiltre]).pipe(
+      map(([nameFiltered, milkFiltered]) => {
+   
+        return nameFiltered.filter((fromage) =>
+          milkFiltered.some((milkFromage) => milkFromage.name === fromage.name)
+        );
+      })
+    );
+  }
+
 
 
 }

@@ -35,9 +35,9 @@ export class AllCheeseComponent implements OnInit {
   }
 
 
-  onFilter = (patern: any) => {
+  onFilter(filter:{ search: string; milk: string | null }): void {
     this.isLoading=true;
-    this.fromageService.getFromageContains(patern).subscribe({
+    this.fromageService.getFromagesFiltres(filter.search,filter.milk).subscribe({
       next: (data) =>{
         this.fromages=data;
         this.isLoading=false;
