@@ -1,0 +1,66 @@
+.about-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fdf6e3;
+    overflow: hidden;
+  }
+  
+  .about-title {
+    font-size: 3rem;
+    font-family: 'Chewy', cursive;
+    color: #4a2c0d;
+    text-align: center;
+    z-index: 1;
+    text-shadow: 3px 3px 5px rgba(255, 204, 0, 0.5);
+    background: linear-gradient(45deg, #ffcc00, #ff9900, #ffcc00);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; 
+    animation: 
+      bounce 2s infinite ease-in-out,
+      gradient 5s infinite ease-in-out;
+  }
+  
+  .gruyere {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    opacity: 0.8;
+  }
+  
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .about-title {
+      font-size: 2rem;
+    }
+  
+    .gruyere {
+      width: 40px;
+      height: 40px;
+    }
+  }
