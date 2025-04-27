@@ -52,8 +52,8 @@ export class AproposComponent implements OnInit, AfterViewInit, OnDestroy {
         element,
         x: initialX,
         y: initialY,
-        vx: (Math.random() * 5 - 1) * 5,
-        vy: (Math.random() * 5 - 1) * 5
+        vx: (Math.random() * 3 - 1) * 5,
+        vy: (Math.random() * 3 - 1) * 5
       };
     });
 

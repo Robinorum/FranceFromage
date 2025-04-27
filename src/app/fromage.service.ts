@@ -34,7 +34,8 @@ export class FromageService {
               wiki_page: el.page_francaise,
               wiki_page_en : el.english_page,
               milk: el.lait,
-              image: imageUrl
+              image: imageUrl,
+              geo_shape: el.geo_shape
             }))
           )
     );
