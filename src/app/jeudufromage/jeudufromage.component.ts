@@ -11,7 +11,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './jeudufromage.component.html',
   styleUrl: './jeudufromage.component.css'
 })
-
 export class JeudufromageComponent implements AfterViewInit {
   fromage_random: Fromage | null = null;
   fromageService = inject(FromageService);
@@ -20,22 +19,32 @@ export class JeudufromageComponent implements AfterViewInit {
   isCorrect: boolean = false;
   message: string = '';
   hintState: number = 0;
+  isLoading: boolean = false;
 
   @ViewChildren('letterInput') letterInputs!: QueryList<ElementRef<HTMLInputElement>>;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    this.Reset();
+  }
+
+  ngAfterViewInit(): void {}
+
+  Reset(): void {
+    this.isLoading = true;
     this.fromageService.getRandomFromage().subscribe(
       data => {
         this.fromage_random = data;
         this.words = data.name.split(/\s+/).filter(word => word.length > 0);
         this.guessedLetters = this.words.map(word => new Array(word.length).fill(''));
-      }
+        this.hintState = 0;
+        this.isCorrect = false;
+        this.message = '';
+        this.isLoading = false;
+      },
     );
   }
-
-  ngAfterViewInit(): void { }
 
   focusNextInput(wordIndex: number, letterIndex: number): void {
     const inputs = this.letterInputs.toArray();

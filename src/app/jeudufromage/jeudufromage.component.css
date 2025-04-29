@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   min-height: 100vh;
   background: #fdf6e3;
   padding: 20px;
@@ -86,7 +85,6 @@
   gap: 10px;
   margin-bottom: 20px;
   width: 100%;
-
 }
 
 .hint-button {
@@ -119,6 +117,23 @@
 }
 
 .answer-button:hover {
+  background: #ffdb4d;
+  transform: translateY(-2px);
+}
+
+.reset-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  background: #d3c4a3;
+  border: 1px solid #ffcc00;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.reset-button:hover {
   background: #ffdb4d;
   transform: translateY(-2px);
 }
