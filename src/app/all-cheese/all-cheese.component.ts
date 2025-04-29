@@ -13,39 +13,39 @@ export class AllCheeseComponent implements OnInit {
 
   fromages = <any>[]
   fromageService = inject(FromageService)
-  isLoading: boolean=false
+  isLoading: boolean = false
 
   constructor() { }
 
   ngOnInit(): void {
     this.isLoading = true;
     this.fromageService.getFromages().subscribe({
-      next: (data) =>{
-        this.fromages=data;
-        this.isLoading=false;
+      next: (data) => {
+        this.fromages = data;
+        this.isLoading = false;
       },
 
       error: () => {
-        this.fromages=[];
-        this.isLoading=false;
+        this.fromages = [];
+        this.isLoading = false;
       }
     }
-    
+
     )
   }
 
 
-  onFilter(filter:{ search: string; milk: string | null }): void {
-    this.isLoading=true;
-    this.fromageService.getFromagesFiltres(filter.search,filter.milk).subscribe({
-      next: (data) =>{
-        this.fromages=data;
-        this.isLoading=false;
+  onFilter(filter: { search: string; milk: string | null }): void {
+    this.isLoading = true;
+    this.fromageService.getFromagesFiltres(filter.search, filter.milk).subscribe({
+      next: (data) => {
+        this.fromages = data;
+        this.isLoading = false;
       },
 
       error: () => {
-        this.fromages=[];
-        this.isLoading=false;
+        this.fromages = [];
+        this.isLoading = false;
       }
     }
 

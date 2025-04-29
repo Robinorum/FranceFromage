@@ -1,4 +1,4 @@
-import { Component, inject} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FromageService } from '../fromage.service';
 import { FromageComponent } from '../fromage/fromage.component';
 import { Fromage } from '../fromage';
@@ -12,9 +12,9 @@ import { Fromage } from '../fromage';
 })
 
 
-export class HomeComponent{
+export class HomeComponent {
 
-  fromage_random:Fromage|null=null
+  fromage_random: Fromage | null = null
   fromageService = inject(FromageService)
 
   constructor() { }

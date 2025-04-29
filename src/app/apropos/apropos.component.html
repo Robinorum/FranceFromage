@@ -1,4 +1,6 @@
 <div class="about-container">
-    <h1 class="about-title">Site fromageux réalisé par METAIS Robin</h1>
-    <img *ngFor="let gruyere of gruyeres; let i = index" [id]="'gruyere-' + i" class="gruyere" src="gruyere.png" alt="Petit gruyère">
-  </div>
+  <h1 class="about-title">Site fromageux réalisé par METAIS Robin</h1>
+  @for (gruyere of gruyeres; track $index; let i = $index) {
+    <img [id]="'gruyere-' + i" class="gruyere" src="gruyere.png" />
+  }
+</div>

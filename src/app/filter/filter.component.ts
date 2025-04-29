@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output} from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -12,13 +12,13 @@ import { CommonModule } from '@angular/common';
 })
 export class FilterComponent {
   @Output() onFilter = new EventEmitter<{ search: string; milk: string | null }>();
-  
+
   formGroup: FormGroup
 
   searchCtrl: FormControl
   milkCtrl: FormControl
 
-  isSearch: boolean = false; 
+  isSearch: boolean = false;
 
   private milkSub: Subscription | null = null;
 
@@ -33,7 +33,7 @@ export class FilterComponent {
     })
   }
 
-//DECLENCHEMENT DE LA RECHERCHE DIRECT QUAND UN BOUTON RADIO EST SELECTIONNE
+  //DECLENCHEMENT DE LA RECHERCHE DIRECT QUAND UN BOUTON RADIO EST SELECTIONNE
   ngOnInit(): void {
     this.milkSub = this.milkCtrl.valueChanges.subscribe(() => {
       this.emitFilter();
@@ -50,10 +50,10 @@ export class FilterComponent {
   //POUR LE CHAMP DE RECHERCHE
   onSub(): void {
 
-    if (this.searchCtrl.value=='') {
+    if (this.searchCtrl.value == '') {
       this.isSearch = false;
     }
-    else{
+    else {
       this.isSearch = true
     }
 
@@ -72,7 +72,7 @@ export class FilterComponent {
 
 
   onMilkButtonDeselect(value: string): void {
-    
+
     if (this.milkCtrl.value === value) {
       this.milkCtrl.setValue(null);
     } else {
@@ -81,7 +81,7 @@ export class FilterComponent {
   }
 
 
-  
+
   resetSearch(): void {
     this.searchCtrl.setValue('');
     this.isSearch = false;

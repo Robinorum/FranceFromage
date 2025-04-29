@@ -1,31 +1,31 @@
 .header {
   width: 100%;
-  padding: 1rem 0; /* Ajoute un peu d'espace vertical */
+  padding: 1rem 0;
 }
 
 .container {
   width: 100%;
-  max-width: 1200px; /* Ajustez selon vos besoins */
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .logo-container {
-  padding-left: 0; /* Assure que le logo est collé à gauche */
+  padding-left: 0;
 }
 
 .nav-container .navbar-nav {
-  gap: 0.5rem; /* Espacement réduit entre les liens */
+  gap: 0.5rem;
 }
 
 .nav-container .nav-link {
-  padding: 0.5rem 0.75rem; /* Padding raisonnable pour les liens */
+  padding: 0.5rem 0.75rem;
 }
 
 .about-container {
-  padding-right: 0; /* Assure que le bouton est collé à droite */
+  padding-right: 0;
 }
 
-/* Style actif pour les liens */
+
 .nav-link.active {
-  font-weight: bold; /* Optionnel : met en évidence le lien actif */
+  font-weight: bold;
 }

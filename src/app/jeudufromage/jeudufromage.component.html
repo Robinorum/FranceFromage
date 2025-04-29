@@ -1,0 +1,53 @@
+<div class="game-container">
+
+
+
+
+
+
+
+  @if (fromage_random) {
+
+
+  @if (hintState > 0 && fromage_random.image) {
+  <div class="hint-image-container">
+    <img [src]="fromage_random.image" alt="Image du fromage" [class.blurred]="hintState === 1" class="hint-image" />
+  </div>
+  }
+
+
+
+
+  <div class="fromage-info">
+    <p><strong>Département :</strong> {{ fromage_random.departement }}</p>
+    <p><strong>Lait :</strong> {{ fromage_random.milk.join(', ') }}</p>
+  </div>
+
+
+
+  <div class="letter-inputs">
+    @for (word of words; track $index; let wordIndex = $index) {
+    <div class="word-group">
+      @for (letter of word.split(''); track $index; let letterIndex = $index) {
+      <input #letterInput type="text" maxlength="1" [(ngModel)]="guessedLetters[wordIndex][letterIndex]"
+        (input)="guessedLetters[wordIndex][letterIndex] = guessedLetters[wordIndex][letterIndex].toLowerCase(); focusNextInput(wordIndex, letterIndex)"
+        placeholder="_" class="letter-input" />
+      }
+    </div>
+    }
+  </div>
+
+
+  <div class="button-container">
+    <button (click)="showIndice()" class="hint-button">Indice</button>
+    <button (click)="checkAnswer()" class="answer-button">Répondre</button>
+  </div>
+
+
+  @if (message) {
+  <p [ngClass]="{'success': isCorrect, 'error': !isCorrect}">{{ message }}</p>
+  }
+  } @else {
+  <p>Chargement du fromage...</p>
+  }
+</div>

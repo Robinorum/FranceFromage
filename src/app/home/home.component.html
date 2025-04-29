@@ -9,12 +9,12 @@
   <div class="row fromage-container">
     <div class="col-3">
       @if (fromage_random) {
-        <app-fromage [fromage]="fromage_random"></app-fromage>
+      <app-fromage [fromage]="fromage_random"></app-fromage>
       } @else {
-        <div class="spinner-container">
-          <div class="spinner"></div>
-          <p class="loading-text">Chargement du fromage...</p>
-        </div>
+      <div class="spinner-container">
+        <div class="spinner"></div>
+        <p class="loading-text">Chargement du fromage...</p>
+      </div>
       }
     </div>
   </div>

@@ -1,22 +1,22 @@
 <div class="bg-color-1">
-    <app-filter (onFilter)="onFilter($event)"></app-filter>
-  
-    <div class="row">
-      @if (isLoading) {
-        <div class="spinner-container">
-          <div class="spinner"></div>
-          <p class="loading-text">Chargement des fromages...</p>
-        </div>
-      } @else if (fromages && fromages.length > 0) {
-        @for (fromage of fromages; track fromage.name) {
-          <div class="col-3 fromage-item">
-            <app-fromage [fromage]="fromage"></app-fromage>
-          </div>
-        }
-      } @else {
-        <div class="no-results">
-          <p>Aucun fromage ne correspond :</p>
-        </div>
-      }
+  <app-filter (onFilter)="onFilter($event)"></app-filter>
+
+  <div class="row">
+    @if (isLoading) {
+    <div class="spinner-container">
+      <div class="spinner"></div>
+      <p class="loading-text">Chargement des fromages...</p>
     </div>
+    } @else if (fromages && fromages.length > 0) {
+    @for (fromage of fromages; track fromage.name) {
+    <div class="col-3 fromage-item">
+      <app-fromage [fromage]="fromage"></app-fromage>
+    </div>
+    }
+    } @else {
+    <div class="no-results">
+      <p>Aucun fromage ne correspond :</p>
+    </div>
+    }
   </div>
+</div>

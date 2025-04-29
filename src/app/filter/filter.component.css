@@ -26,7 +26,7 @@ input {
   background: #fff;
   border: 1px solid #e6d7a3;
   border-right: none;
-  border-radius: 5px 0 0 5px; 
+  border-radius: 5px 0 0 5px;
   width: 200px;
   transition: border-color 0.3s ease;
 }
@@ -49,8 +49,8 @@ button {
   color: #333;
   background: #ffcc00;
   border: 1px solid #e6d7a3;
-  border-left: none; 
-  border-radius: 0 5px 5px 0; 
+  border-left: none;
+  border-radius: 0 5px 5px 0;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -66,16 +66,16 @@ button:disabled {
 }
 
 .reset-button {
-  padding: 0; 
+  padding: 0;
   font-size: 0.9rem;
   color: #4a2c0d;
   background: #fff;
   border: 1px solid #ffcc00;
-  border-left: none; 
-  border-right: none; 
-  border-radius: 0; 
-  width: 24px; 
-  height: 46px; 
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  width: 24px;
+  height: 46px;
   display: flex;
   align-items: center;
   justify-content: center;

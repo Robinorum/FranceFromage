@@ -1,0 +1,138 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-height: 100vh;
+  background: #fdf6e3;
+  padding: 20px;
+}
+
+.fromage-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.fromage-info p {
+  font-family: 'Arial', sans-serif;
+  color: #4a2c0d;
+  font-size: 1.2rem;
+  margin: 5px 0;
+}
+
+.hint-image-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.hint-image {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 10px;
+  border: 2px solid #e6d7a3;
+  transition: filter 0.3s ease;
+}
+
+.hint-image.blurred {
+  filter: blur(10px);
+}
+
+.letter-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: none;
+  overflow-x: auto;
+  text-align: center;
+  padding: 0 10px;
+  white-space: nowrap;
+}
+
+.word-group {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.letter-input {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: 'Arial', sans-serif;
+  text-transform: lowercase;
+  border: 1px solid #e6d7a3;
+  border-radius: 5px;
+  background: #fff;
+  color: #4a2c0d;
+  flex-shrink: 0;
+}
+
+.letter-input:focus {
+  outline: none;
+  border-color: #ffcc00;
+  box-shadow: 0 0 5px rgba(255, 204, 0, 0.3);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+
+}
+
+.hint-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  background: #e6d7a3;
+  border: 1px solid #ffcc00;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hint-button:hover {
+  background: #ffdb4d;
+  transform: translateY(-2px);
+}
+
+.answer-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  background: #ffcc00;
+  border: 1px solid #e6d7a3;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.answer-button:hover {
+  background: #ffdb4d;
+  transform: translateY(-2px);
+}
+
+.success {
+  color: #28a745;
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.error {
+  color: #dc3545;
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}

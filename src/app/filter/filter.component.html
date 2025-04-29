@@ -2,36 +2,34 @@
   <div class="filter-wrapper">
     <div class="search-container">
       <input formControlName="searchCtrl" placeholder="Rechercher un fromage..." aria-label="Rechercher un fromage">
-      <button
-        *ngIf="isSearch"
-        type="button"
-        class="reset-button"
-        (click)="resetSearch()"
-        aria-label="Réinitialiser la recherche"
-      >
-        ✕
-      </button>
+      @if (isSearch) {
+        <button
+          type="button"
+          class="reset-button"
+          (click)="resetSearch()"
+          aria-label="Réinitialiser la recherche"
+        >
+          ✕
+        </button>
+      }
       <button type="submit" [disabled]="searchCtrl.invalid && !milkCtrl.value">Filtrer</button>
     </div>
 
+    <div class="milk-filter">
+      <label class="milk-option">
+        <input type="radio" formControlName="milkCtrl" name="milkCtrl" value="vache" (click)="onMilkButtonDeselect('vache')">
+        Lait de vache
+      </label>
 
-      <div class="milk-filter">
+      <label class="milk-option">
+        <input type="radio" formControlName="milkCtrl" name="milkCtrl" value="chèvre" (click)="onMilkButtonDeselect('chèvre')">
+        Lait de chèvre
+      </label>
 
-        <label class="milk-option">
-          <input type="radio" formControlName="milkCtrl" name="milkCtrl" value="vache" (click)="onMilkButtonDeselect('vache')">
-          Lait de vache
-        </label>
-
-        <label class="milk-option">
-          <input type="radio" formControlName="milkCtrl" name="milkCtrl" value="chèvre" (click)="onMilkButtonDeselect('chèvre')">
-          Lait de chèvre
-        </label>
-
-        <label class="milk-option">
-          <input type="radio" formControlName="milkCtrl" name="milkCtrl" value="brebis" (click)="onMilkButtonDeselect('brebis')">
-          Lait de brebis
-        </label>
-        
-      </div>
+      <label class="milk-option">
+        <input type="radio" formControlName="milkCtrl" name="milkCtrl" value="brebis" (click)="onMilkButtonDeselect('brebis')">
+        Lait de brebis
+      </label>
     </div>
-  </form>
+  </div>
+</form>

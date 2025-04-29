@@ -6,16 +6,16 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './fromage.component.html',
   styleUrl: './fromage.component.css'
 })
-export class FromageComponent implements OnInit{
+export class FromageComponent implements OnInit {
 
   @Input() fromage: any
 
-  constructor(){}
+  constructor() { }
 
   ngOnInit(): void {
   }
-  
-  ngOnDestroy(): void{
+
+  ngOnDestroy(): void {
   }
 
 }
