@@ -22,3 +22,11 @@ ng serve
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+
+
+## API utilisée 
+
+Voici le lien de l'API fromagesque que j'ai utilisé :
+
+https://public.opendatasoft.com/explore/dataset/fromagescsv-fromagescsv
