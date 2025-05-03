@@ -3,6 +3,6 @@ export interface Fromage {
     wiki_page: string
     wiki_page_en: string
     departement: string
-    milk: Array<string>
+    milk: string
     image: string
 }

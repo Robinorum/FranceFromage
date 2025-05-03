@@ -39,7 +39,7 @@ export class FromageService {
                   departement: el.departement,
                   wiki_page: el.page_francaise,
                   wiki_page_en: el.english_page,
-                  milk: el.lait,
+                  milk: el.lait[0],
                   image: imageUrl,
                 }))
               )
@@ -92,16 +92,15 @@ export class FromageService {
 
 //recuperer les fromages en fonction du type de lait
   getFromagesMilk(milk: string | null): Observable<Fromage[]> {
-    return this.getFromages()
-      .pipe(
-        map((fromages: Fromage[]) =>
-          milk
-            ? fromages.filter((fromage) =>
-              fromage.milk.map((m) => m.toLowerCase()).includes(milk.toLowerCase())
+    return this.getFromages().pipe(
+      map((fromages: Fromage[]) =>
+        milk
+          ? fromages.filter((fromage) =>
+              fromage.milk.toLowerCase() === milk.toLowerCase()
             )
-            : fromages
-        )
-      );
+          : fromages
+      )
+    );
   }
 
 
