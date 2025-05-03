@@ -3,6 +3,14 @@
 
 Un projet succulent sur les fromages français, fait par METAIS Robin
 
+Pour lancer ce site, vous n'avez besoin de rien, a part d'angular fonctionnel sur votre pc. 
+
+ 
+
+***CEPENDANT***
+
+Si vous avez une intolerance au lactose, ne lancez pas ce site
+
 
 
 ## Development server
