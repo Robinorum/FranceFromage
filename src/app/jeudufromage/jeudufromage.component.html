@@ -2,24 +2,35 @@
   @if (isLoading) {
     <p>Chargement du fromage...</p>
   } @else if (fromage_random) {
-    @if (hintState > 0 && fromage_random.image) {
+    @if (hintNumber > 0 && fromage_random.image) {
+
+          <!-- image du fromage, si le bouton indice est cliqué 1 fois alors la photo apparait floutée, 2 fois et elle est defloutée, d'ou le class.blurred-->
+
       <div class="hint-image-container">
-        <img [src]="fromage_random.image" alt="Image du fromage" [class.blurred]="hintState === 1" class="hint-image" />
+        <img [src]="fromage_random.image" alt="Image du fromage" [class.blurred]="hintNumber === 1" class="hint-image" /> 
       </div>
     }
 
+    <!-- on affiche quand meme le departement et le type de lait c'est la moindre des choses-->
     <div class="fromage-info">
       <p><strong>Département :</strong> {{ fromage_random.departement }}</p>
-      <p><strong>Lait :</strong> {{ fromage_random.milk.join(', ') }}</p>
+      <p><strong>Lait :</strong> {{ fromage_random.milk }}</p>
     </div>
 
+    <!-- on sépare chaque mots, puis chaque lettres, pour creer un bel affichage lettre par lettre, avec chaque mot sur une ligne-->
     <div class="letter-inputs">
       @for (word of words; track $index; let wordIndex = $index) {
         <div class="word-group">
           @for (letter of word.split(''); track $index; let letterIndex = $index) {
-            <input #letterInput type="text" maxlength="1" [(ngModel)]="guessedLetters[wordIndex][letterIndex]"
-              (input)="guessedLetters[wordIndex][letterIndex] = guessedLetters[wordIndex][letterIndex].toLowerCase(); focusNextInput(wordIndex, letterIndex)"
-              placeholder="_" class="letter-input" />
+            <!-- on veut un _ pour chaque lettres. On suit l'affichage grace à une matrice guessedLetters, qui va ajouter la lettre saisie à l'index correspondant-->
+            <input
+              type="text"
+              maxlength="1"
+              [value]="guessedLetters[wordIndex][letterIndex]" 
+              (input)="onLetterInput($event, wordIndex, letterIndex)"
+              placeholder="_"
+              class="letter-input"
+            />
           }
         </div>
       }
@@ -28,7 +39,7 @@
     <div class="button-container">
       <button (click)="showIndice()" class="hint-button">Indice</button>
       <button (click)="checkAnswer()" class="answer-button">Répondre</button>
-      <button (click)="Reset()" class="reset-button">Nouveau fromage</button>
+      <button (click)="Reset()" class="reset-button">Nouveau Fromage</button>
     </div>
 
     @if (message) {

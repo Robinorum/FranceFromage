@@ -106,9 +106,16 @@ export class FromageService {
 
 
   //fonction qui combine les deux autres, si on a pas de filtre on renvoie tous les fromages
+
+//Je sais, j'aurais pu faire une seule fonction pour checker le type de fromage en l'input en meme temps
+//mais j'ai prefere separer les deux, je trouve ça plus clair, et ça se rapproche plus de ce que l'on a fait en tp
+//en plus c'est modulaire, si un jour je veux supprimer les boutons radio pour le type de lait, j'ai pas besoin de modifier tout
+
+//cependant, avec cette approche, j'ai deux appels à getFromages :(
+
   getFromagesFiltres(search: string, milk: string | null): Observable<Fromage[]> {
 
-    if (!search && !milk) {
+    if (!search && !milk) { //si y a rien, on renvoie juste tout les fromages
       return this.getFromages();
     }
 
@@ -117,11 +124,11 @@ export class FromageService {
     const milkFiltre = milk ? this.getFromagesMilk(milk) : this.getFromages();
 
 
-    return forkJoin([nameFiltre, milkFiltre]).pipe(
+    return forkJoin([nameFiltre, milkFiltre]).pipe( //encore une fois on attends que toutes les fromages soit filtés avec de .pipe
       map(([nameFiltered, milkFiltered]) => {
 
         return nameFiltered.filter((fromage) =>
-          milkFiltered.some((milkFromage) => milkFromage.name === fromage.name)
+          milkFiltered.some((milkFromage) => milkFromage.name === fromage.name) //on match ensemble les fromages identiques dans namefiltre et milkfiltre
         );
       })
     );

@@ -58,14 +58,3 @@
     background-position: 0% 50%;
   }
 }
-
-@media (max-width: 768px) {
-  .about-title {
-    font-size: 2rem;
-  }
-
-  .gruyere {
-    width: 40px;
-    height: 40px;
-  }
-}

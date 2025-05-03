@@ -1,13 +1,12 @@
-import { Component, inject, ViewChildren, QueryList, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, inject, AfterViewInit } from '@angular/core';
 import { FromageService } from '../fromage.service';
 import { Fromage } from '../fromage';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-jeudufromage',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [CommonModule],
   templateUrl: './jeudufromage.component.html',
   styleUrl: './jeudufromage.component.css'
 })
@@ -15,67 +14,62 @@ export class JeudufromageComponent implements AfterViewInit {
   fromage_random: Fromage | null = null;
   fromageService = inject(FromageService);
   words: string[] = [];
-  guessedLetters: string[][] = [];
+  guessedLetters: string[][] = []; //la fameuse matrice dont je parlais dans le html, pour suivre les lettres inscrites dans les inputs, en fonction des mots et de la position de la lettre dans le mot
   isCorrect: boolean = false;
   message: string = '';
-  hintState: number = 0;
+  hintNumber: number = 0;
   isLoading: boolean = false;
-
-  @ViewChildren('letterInput') letterInputs!: QueryList<ElementRef<HTMLInputElement>>;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.Reset();
+    this.loadNewFromage();
   }
 
   ngAfterViewInit(): void {}
 
-  Reset(): void {
+  private loadNewFromage(): void {
     this.isLoading = true;
-    this.fromageService.getRandomFromage().subscribe(
+    this.fromageService.getRandomFromage().subscribe( //on initialise toutes les variables, et on recup le fromage aleatoire
       data => {
         this.fromage_random = data;
-        this.words = data.name.split(/\s+/).filter(word => word.length > 0);
-        this.guessedLetters = this.words.map(word => new Array(word.length).fill(''));
-        this.hintState = 0;
+        this.words = data.name.split(' ').filter(word => word.length > 0); //on separe chaque mots
+        this.guessedLetters = this.words.map(word => new Array(word.length).fill('')); //on set la matrice pour chaque mot
+        this.hintNumber = 0;
         this.isCorrect = false;
         this.message = '';
         this.isLoading = false;
-      },
+      }
     );
   }
 
-  focusNextInput(wordIndex: number, letterIndex: number): void {
-    const inputs = this.letterInputs.toArray();
-    const totalInputsBefore = this.words
-      .slice(0, wordIndex)
-      .reduce((sum, word) => sum + word.length, 0);
-    const currentInputIndex = totalInputsBefore + letterIndex;
-
-    if (currentInputIndex < inputs.length - 1) {
-      inputs[currentInputIndex + 1].nativeElement.focus();
-    }
+  onLetterInput(event: Event, wordIndex: number, letterIndex: number): void {
+    const input = event.target as HTMLInputElement; //POUR RECUPERER LA LETTRE ENTRéE --> recupere l'input a partir de l'event passé en parametre (dans notre cas, ça recupere la lettre rentrée)
+    const value = input.value.toLowerCase(); //on rend tout ça insensible a la casse
+    this.guessedLetters[wordIndex][letterIndex] = value.length > 1 ? value.charAt(0) : value; //on insere la lettre au bon mot, et au bon index
   }
 
   checkAnswer(): void {
     const userGuess = this.guessedLetters
-      .map(wordLetters => wordLetters.join(''))
+      .map(wordLetters => wordLetters.join('')) //on merge les lettres et les mots pour comparer a la reponse
       .join(' ')
       .toLowerCase();
-    const correctName = this.fromage_random?.name.toLowerCase() || '';
-    if (userGuess === correctName) {
+    if (userGuess === this.fromage_random?.name.toLowerCase()) {
       this.isCorrect = true;
-      this.message = 'Bravo !';
+      this.message = 'Bravo ! Vous êtes un vrai fromageur';
     } else {
       this.isCorrect = false;
-      this.message = 'Incorrect, essayez encore !';
+      this.message = "Incorrect, révisez vos fromages !";
     }
   }
 
-  showIndice(): void {
-    if (this.hintState < 2) {
-      this.hintState++;
+  showIndice(): void {  //seulement une variable qui s'incremente au clic du bouton, et qui agit sur la photo du fromage dans le html
+    if (this.hintNumber < 2) {
+      this.hintNumber++;
     }
+  }
+
+  Reset(): void { //quand le user clique sur un nouveau fromage, on cherche un nouveau fromage random
+    this.loadNewFromage();
   }
 }
